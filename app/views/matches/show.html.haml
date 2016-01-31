@@ -1,0 +1,9 @@
+%h1= @match.title
+%br
+%h2= @match.location
+%h3= @match.date
+%h3= @match.time
+%br
+=link_to "All matches", root_path
+=link_to "Edit match", edit_match_path
+=link_to "Delete", match_path, method: :delete, data: { confirm: "Are you sure?"}

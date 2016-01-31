@@ -1,0 +1,9 @@
+= simple_form_for @match do |f|
+  = f.input :title
+  = f.input :location
+  = f.input :date
+  = f.input :time
+  %br
+  = f.button :submit
+  %br
+= link_to "All Matches", root_path

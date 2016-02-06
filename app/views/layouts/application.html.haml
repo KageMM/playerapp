@@ -1,0 +1,24 @@
+!!! 5
+%html
+%head
+  %title PlayerApp
+  =stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true
+  =csrf_meta_tags
+
+%body
+  %nav.navbar.navbar-default
+    %div.container-fluid
+      .btn.navbar-toggle.collapsed{:data =>{:toggle => 'collapse',:target => '#bs-example-navbar-collapse-1'}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .navbar-brand= link_to "PlayerApp", root_path
+      %div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+        %ul.nav.nav-pills.navbar-right
+          %li= link_to "Home",'#'
+          %li= link_to "About",'#'
+          %li= link_to "Contact", '#'
+
+= yield

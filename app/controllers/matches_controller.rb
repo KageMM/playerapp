@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
 before_action :find_params, only: [:show, :destroy, :edit, :update]
 
   def index
-    @matches = Match.all
+    @matches = Match.all.order('created_at DESC')
   end
 
   def new
@@ -26,6 +26,8 @@ before_action :find_params, only: [:show, :destroy, :edit, :update]
 
   def destroy
     @match.destroy
+    @match.avatar = nil
+    @match.save
     redirect_to matches_path
   end
 
@@ -41,7 +43,7 @@ before_action :find_params, only: [:show, :destroy, :edit, :update]
   private
 
   def match_params
-    params.require(:match).permit(:title, :location, :date, :time)
+    params.require(:match).permit(:avatar,:title, :location, :date, :time)
   end
 
   def find_params

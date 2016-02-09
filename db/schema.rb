@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207192340) do
+ActiveRecord::Schema.define(version: 20160209025813) do
 
   create_table "matches", force: :cascade do |t|
     t.string   "title"
@@ -43,5 +43,10 @@ ActiveRecord::Schema.define(version: 20160207192340) do
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
+
+  create_table "weekly_matches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

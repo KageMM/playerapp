@@ -1,16 +1,16 @@
 class MatchesController < ApplicationController
 before_action :find_params, only: [:show, :destroy, :edit, :update]
-
+before_action :authenticate_player!, except: [:index]
   def index
     @matches = Match.all.order('created_at DESC')
   end
 
   def new
-    @match = Match.new
+    @match = current_player.matches.build
   end
 
   def create
-    @match = Match.new(match_params)
+    @match = current_player.matches.build(match_params)
     if @match.save
       redirect_to @match
     else

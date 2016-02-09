@@ -17,9 +17,14 @@
       .navbar-brand= link_to "PlayerApp", root_path
       %div.collapse.navbar-collapse#bs-example-navbar-collapse-1
         %ul.nav.nav-pills.navbar-right
-          %li= link_to "New Match",new_match_path
-          %li= link_to "About",'#'
-          %li= link_to "Contact", '#'
+          -if player_signed_in?
+            %li= link_to "New Fixture",new_match_path
+            %li= link_to "About",'#'
+            %li= link_to "Contact", '#'
+          -else
+            %li= link_to "Upcoming Fixtures", matches_path
+            %li= link_to "About",'#'
+            %li= link_to "Contact", '#'
 
 %p.notice
   = notice

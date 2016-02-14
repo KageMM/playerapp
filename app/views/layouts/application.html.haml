@@ -18,10 +18,12 @@
       %div.collapse.navbar-collapse#bs-example-navbar-collapse-1
         %ul.nav.nav-pills.navbar-right
           -if player_signed_in?
+            %li= link_to "Sign Out"
             %li= link_to "New Fixture",new_match_path
             %li= link_to "About",'#'
             %li= link_to "Contact", '#'
           -else
+            %li= link_to "Sign Up", new_player_registration_path
             %li= link_to "Upcoming Fixtures", matches_path
             %li= link_to "About",'#'
             %li= link_to "Contact", '#'

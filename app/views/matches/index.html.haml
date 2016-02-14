@@ -1,3 +1,8 @@
--@matches.each do |f|
-  %h1=link_to f.title, f
-%br
+#matches.transitions-enabled
+  - @matches.each do |match|
+    .box.panel.panel-default
+      = link_to (image_tag match.avatar.url), match
+      .panel-body
+        %h2=link_to match.title, match
+        %p.player
+          =match.player.email

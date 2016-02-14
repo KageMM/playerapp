@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209025813) do
+ActiveRecord::Schema.define(version: 20160214223229) do
 
   create_table "matches", force: :cascade do |t|
     t.string   "title"
@@ -24,7 +24,19 @@ ActiveRecord::Schema.define(version: 20160209025813) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "player_id"
   end
+
+  add_index "matches", ["player_id"], name: "index_matches_on_player_id"
+
+  create_table "player_reservations", force: :cascade do |t|
+    t.string   "player_name"
+    t.integer  "match_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "player_reservations", ["match_id"], name: "index_player_reservations_on_match_id"
 
   create_table "players", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

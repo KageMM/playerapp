@@ -5,6 +5,6 @@ class Player < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, uniqueness: true
-  has_many :matches, :through => :weekly_matches
-  has_many :weekly_matches
+  has_many :matches
+
 end

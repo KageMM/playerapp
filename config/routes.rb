@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :players
-  resources :matches
+  resources :matches do
+    resources :player_reservations, only: :create
+  end
 
   root 'matches#index'
   # https://pure-bayou-53663.herokuapp.com/

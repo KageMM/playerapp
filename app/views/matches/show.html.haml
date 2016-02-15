@@ -1,10 +1,18 @@
-=image_tag @match.avatar.url(:medium)
-%h1= @match.title
-%br
-%h2= @match.location
-%h3= @match.date
-%h3= @match.time
-%br
-=link_to "All matches", root_path
-=link_to "Edit match", edit_match_path
-=link_to "Delete", match_path, method: :delete, data: { confirm: "Are you sure?"}
+#match_show.row
+  .col-md-8.col-md-offset-2
+    .panel-default
+      .panel-heading.match_image
+        =image_tag @match.avatar.url(:medium)
+      .panel-body
+        %h1= @match.title
+        %h2= @match.location
+        %h3= @match.date
+        %h3= @match.time
+      .panel-footer
+        %p Submitted by
+        =@match.player.email
+        %br
+        .btn-group.pull-right
+        =link_to "All matches", root_path
+        =link_to "Edit match", edit_match_path
+        =link_to "Delete", match_path, method: :delete, data: { confirm: "Are you sure?"}
